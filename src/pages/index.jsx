@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react';
 import SEO from "@components/seo";
 import Wrapper from "@layout/wrapper";
 import Header from "@layout/header/header-01";
@@ -37,7 +38,7 @@ const Home = () => {
         .slice(0, 5);
 
     return (
-        <Wrapper>
+        <div>
             <SEO pageTitle="Home Default" />
             <Header />
             <main id="main-content">
@@ -83,7 +84,7 @@ const Home = () => {
                 />
             </main>
             <Footer />
-        </Wrapper>
+        </div>
     );
 };
 

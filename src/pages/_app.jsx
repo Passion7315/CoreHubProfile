@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import { useRouter } from "next/router";
 import { SSRProvider } from "react-bootstrap";
@@ -18,6 +18,16 @@ import "../assets/scss/style.scss";
 const MyApp = ({ Component, pageProps }) => {
     const getLayout = Component.getLayout || ((page) => page);
     const router = useRouter();
+    const [currentTheme, setCurrentTheme] = useState({});
+
+    useEffect(() => {
+        const theme = JSON.parse(localStorage.getItem('theme'));
+        console.log('MyApp useEffect log - 1 : ', theme);
+        if (theme && theme !== currentTheme) {
+            setCurrentTheme(theme);
+        }
+    }, []);
+
     useEffect(() => {
         sal({ threshold: 0.1, once: true });
     }, [router.asPath]);
@@ -35,6 +45,17 @@ const MyApp = ({ Component, pageProps }) => {
                     <AuthContextProvider>
                         <SigningCosmWasmProvider>
                             <Provider store={store}>
+                                <div style={{
+                                    backgroundColor: currentTheme.backgroundColor,
+                                    backgroundImage: `url("${currentTheme.backgroundImage}")`,
+                                    backgroundSize: 'cover',
+                                    backgroundPosition: 'center',
+                                    width: '100vw',
+                                    height: '100vh',
+                                    top: '0',
+                                    position: 'fixed',
+                                    filter: `blur(${currentTheme.blurMode ? '7px' : '0px'})`,
+                                }} />
                                 <Component {...pageProps} />
                             </Provider>
                         </SigningCosmWasmProvider>

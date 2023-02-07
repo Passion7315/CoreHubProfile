@@ -65,7 +65,7 @@ const Settings = () => {
 
   const [newTheme, setNewTheme] = useState({
     backgroundColor: '#ffffff00',
-    bakcgroundImage: '',
+    backgroundImage: '',
     blurMode: false,
   });
   const [updateValue, setUpdateValue] = useState(false);
@@ -74,7 +74,7 @@ const Settings = () => {
     console.log('upgradeTheme log - 1 : ', backgroundColor_u, backgroundImage_u, blurMode_u);
     const tempTheme = {
       backgroundColor: backgroundColor_u,
-      bakcgroundImage: backgroundImage_u,
+      backgroundImage: backgroundImage_u,
       blurMode: blurMode_u,
     };
     console.log('upgradeTheme log - 2 : ', tempTheme);
@@ -144,10 +144,10 @@ const Settings = () => {
             </ListItemButton>
           </ListItem>
           <ListItem disablePadding>
-            <ListItemButton onClick={() => upgradeTheme(newTheme.backgroundColor, newTheme.bakcgroundImage, !newTheme.blurMode)}>
+            <ListItemButton onClick={() => upgradeTheme(newTheme.backgroundColor, newTheme.backgroundImage, !newTheme.blurMode)}>
               <ListItemIcon>
                 {
-                  blurMode ?
+                  newTheme.blurMode ?
                     <CheckBox /> :
                     <CheckBoxOutlineBlank />
                 }
@@ -220,7 +220,7 @@ const Settings = () => {
           </ListItem>
           <ListItem>
             <ListItemButton
-              onClick={() => upgradeTheme(colorPickerColor, newTheme.bakcgroundImage, newTheme.blurMode)}
+              onClick={() => upgradeTheme(colorPickerColor, newTheme.backgroundImage, newTheme.blurMode)}
               sx={{
                 border: '1px solid white',
               }}>
