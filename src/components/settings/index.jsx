@@ -81,6 +81,7 @@ const Settings = () => {
     localStorage.setItem('theme', JSON.stringify(tempTheme));
     setNewTheme(tempTheme);
     setUpdateValue(!updateValue);
+    
   }
 
   const [colorPickerColor, setColorPickerColor] = useState('#ffffff00');
@@ -164,7 +165,7 @@ const Settings = () => {
               Wallpaper.map((item) => (
                 <Grid item xs={4}>
                   <Button
-                    onClick={() => upgradeTheme(newTheme.backgroundColor, item.imageUrl, newTheme.blurMode)}
+                    onClick={() => upgradeTheme('#ffffff00', item.imageUrl, newTheme.blurMode)}
                     sx={{
                       padding: '0',
                       margin: '0',
@@ -220,7 +221,7 @@ const Settings = () => {
           </ListItem>
           <ListItem>
             <ListItemButton
-              onClick={() => upgradeTheme(colorPickerColor, newTheme.backgroundImage, newTheme.blurMode)}
+              onClick={() => upgradeTheme(colorPickerColor, '', false)}
               sx={{
                 border: '1px solid white',
               }}>
@@ -232,76 +233,6 @@ const Settings = () => {
           </ListItem>
         </Box>
       </Drawer>
-      {/* <div className="rn-dropdown py-4 px-5">
-        <div className="setting-container">
-          <button className="setting-tutorial" onClick={openModal}>
-            <FaBook size={16} />
-            <span>TUTORIAL</span>
-          </button>
-          <div className="setting-lang">
-            <select className="select-lang">
-              <option>eng</option>
-              <option>esp</option>
-              <option>deu</option>
-              <option>fra</option>
-              <option>portuguese</option>
-              <option>ita</option>
-              <option>ned</option>
-              <option>lat</option>
-              <option>svenska</option>
-              <option>polski</option>
-              <option>русский</option>
-              <option>ellinikí</option>
-              <option>türk</option>
-              <option>Việt</option>
-              <option>tagalog</option>
-              <option>日本語</option>
-              <option>中文简体</option>
-              <option>中文繁體</option>
-              <option>한국인</option>
-              <option>عربى</option>
-              <option>فارسی</option>
-            </select>
-          </div>
-          <div id="my_switcher" className="setting-option my_switcher">
-            <ColorSwitcher />
-          </div>
-        </div>
-        <Modal
-          className="tutorial-modal"
-          isOpen={isModal}
-          style={customStyles}
-          contentLabel="Tutorial Modal"
-        >
-          <div className='w-100'>
-            {TutorialData.length > 0 && (
-              <Carosuel dots={false} items={1}>
-                {
-                  TutorialData.map(item => (
-                    <div className='tutorial-page' key={item.id}>
-                      <Image
-                        src={item.image.src}
-                        alt={item.title}
-                        width={500}
-                        height={400}
-                      />
-                      <div className='tutorial-content'>
-                        <h3 className='mb--5'>{item.title}</h3>
-                        <span className='fs-3 mb--5'>{item.description}</span>
-                        {
-                          item.id === 5 && (
-                            <button className='btn-end-tutorial' onClick={closeModal}>Get Started</button>
-                          )
-                        }
-                      </div>
-                    </div>
-                  ))
-                }
-              </Carosuel>
-            )}
-          </div>
-        </Modal>
-      </div> */}
     </div>
   );
 };
