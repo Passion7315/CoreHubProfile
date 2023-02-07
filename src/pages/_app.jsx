@@ -7,7 +7,11 @@ import { ThemeProvider } from "next-themes";
 import { AuthContextProvider } from "@context/authContext";
 import { SigningCosmWasmProvider } from "@context/cosmwasm";
 import { Provider } from "react-redux";
+import App from "./App"
 import store from "../store";
+
+import { useCookies, CookiesProvider } from 'react-cookie';
+
 
 import "../assets/css/bootstrap.min.css";
 import "../assets/css/feather.css";
@@ -19,6 +23,9 @@ const MyApp = ({ Component, pageProps }) => {
     const getLayout = Component.getLayout || ((page) => page);
     const router = useRouter();
     const [currentTheme, setCurrentTheme] = useState({});
+
+    const [cookies, setCookie] = useCookies(['updateThemeFlag']);
+
 
     useEffect(() => {
         const theme = JSON.parse(localStorage.getItem('theme'));
@@ -45,18 +52,8 @@ const MyApp = ({ Component, pageProps }) => {
                     <AuthContextProvider>
                         <SigningCosmWasmProvider>
                             <Provider store={store}>
-                                <div style={{
-                                    backgroundColor: currentTheme.backgroundColor,
-                                    backgroundImage: `url("${currentTheme.backgroundImage}")`,
-                                    backgroundSize: 'cover',
-                                    backgroundPosition: 'center',
-                                    width: '100vw',
-                                    height: '100vh',
-                                    top: '0',
-                                    position: 'fixed',
-                                    filter: `blur(${currentTheme.blurMode ? '7px' : '0px'})`,
-                                }} />
-                                <Component {...pageProps} />
+                                <App/>
+                                
                             </Provider>
                         </SigningCosmWasmProvider>
                     </AuthContextProvider>
