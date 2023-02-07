@@ -1,0 +1,42 @@
+[
+    {
+        "id": 1,
+        "title": "Connect Wallet",
+        "description": "Connect your preferred private wallet or create a new one using the SOLO DEX app to safely manage your assets.",
+        "image": {
+            "src": "/images/portfolio/portfolio-05.jpg"
+        }
+    },
+    {
+        "id": 2,
+        "title": "Set Up your Profile",
+        "description": "Create a unique username and customize your page with a picture, cover art and description. Include your social media links for them to be displayed on your profile page.",
+        "image": {
+            "src": "/images/portfolio/portfolio-05.jpg"
+        }
+    },
+    {
+        "id": 3,
+        "title": "Create your collection",
+        "description": "You can mint multiple NFTs under one collection. Give it a name, description, and add a picture or GIF that best represents the artworks included in it.",
+        "image": {
+            "src": "/images/portfolio/portfolio-05.jpg"
+        }
+    },
+    {
+        "id": 4,
+        "title": "Mint NFT",
+        "description": "For every new NFT that you wish to create, it is necessary to burn SOLO. Upload your files into the right category, add some information for potential buyers to see, and proceed to validate and seal each NFT using your Wallet.",
+        "image": {
+            "src": "/images/portfolio/portfolio-05.jpg"
+        }
+    },
+    {
+        "id": 5,
+        "title": "Share with the World",
+        "description": "Make sure to share your collection and NFTs on your social media channels to get the maximum exposure!",
+        "image": {
+            "src": "/images/portfolio/portfolio-05.jpg"
+        }
+    }
+]

@@ -1,0 +1,9 @@
+[
+    {
+        "id": 1,
+        "title": "Default",
+        "backgroundColor": "#13131d",
+        "backgroundImage": "/images/bg/noise.gif",
+        "fontColor": "#ffffff"
+    }
+]
