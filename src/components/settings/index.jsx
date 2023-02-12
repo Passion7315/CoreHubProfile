@@ -3,6 +3,7 @@ import { FiSettings } from "react-icons/fi";
 import {
     Box,
     Button,
+    Chip,
     Divider,
     Drawer,
     Grid,
@@ -251,6 +252,33 @@ const Settings = () => {
                             <ListItemText primary={"Blurred"} />
                         </ListItemButton>
                     </ListItem>
+                    <ListItem>
+                        <Box sx={{
+                            position: 'relative',
+                            width: '100%',
+                            height: '28px',
+                        }}>
+                            <Divider sx={{ width: '100%', position: 'absolute', top: '12px' }} />
+                            <Box sx={{
+                                position: 'absolute',
+                                width: '100%',
+                                display: 'flex',
+                                flexDirection: 'row',
+                                justifyContent: 'center',
+                            }}>
+                                <Chip label="Default background"
+                                    sx={{
+                                        height: '28px',
+                                        color: 'white',
+                                        backgroundColor: '#13131d',
+                                        '& .MuiChip-label': {
+                                            fontSize: '11px',
+                                        }
+
+                                    }} />
+                            </Box>
+                        </Box>
+                    </ListItem>
                     <Grid
                         container
                         spacing={1}
@@ -284,6 +312,41 @@ const Settings = () => {
                                     </Button>
                                 </Grid>
                             ))}
+                    </Grid>
+                    <ListItem>
+                        <Box sx={{
+                            position: 'relative',
+                            width: '100%',
+                            height: '28px',
+                        }}>
+                            <Divider sx={{ width: '100%', position: 'absolute', top: '12px' }} />
+                            <Box sx={{
+                                position: 'absolute',
+                                width: '100%',
+                                display: 'flex',
+                                flexDirection: 'row',
+                                justifyContent: 'center',
+                            }}>
+                                <Chip label="Uploaded background"
+                                    sx={{
+                                        height: '28px',
+                                        color: 'white',
+                                        backgroundColor: '#13131d',
+                                        '& .MuiChip-label': {
+                                            fontSize: '11px',
+                                        }
+
+                                    }} />
+                            </Box>
+                        </Box>
+                    </ListItem>
+                    <Grid
+                        container
+                        spacing={1}
+                        sx={{
+                            padding: "10px",
+                        }}
+                    >
                         {uploadImageList.length > 0 &&
                             uploadImageList.map((item) => (
                                 <Grid item xs={4}>
@@ -352,24 +415,40 @@ const Settings = () => {
                             onChangeComplete={(c) =>
                                 setColorPickerColor(
                                     "#" +
-                                        rgbHex(
-                                            c.rgb.r,
-                                            c.rgb.g,
-                                            c.rgb.b,
-                                            c.rgb.a
-                                        )
+                                    rgbHex(
+                                        c.rgb.r,
+                                        c.rgb.g,
+                                        c.rgb.b,
+                                        c.rgb.a
+                                    )
                                 )
                             }
                         />
                     </ListItem>
                     <ListItem>
-                        <Box
-                            sx={{
-                                width: "100%",
-                                height: "50px",
-                                backgroundColor: colorPickerColor,
-                            }}
-                        />
+                        <Box sx={{
+                            position: 'relative',
+                            width: '100%',
+                            height: '50px',
+                            border: '1px solid gray',
+                        }}>
+                            <Box
+                                sx={{
+                                    position: 'absolute',
+                                    width: '100%',
+                                    height: '100%',
+                                    backgroundImage: 'url(./images/bg/bg-transparent.jpg)',
+                                }}
+                            />
+                            <Box
+                                sx={{
+                                    position: 'absolute',
+                                    width: '100%',
+                                    height: '100%',
+                                    backgroundColor: colorPickerColor,
+                                }}
+                            />
+                        </Box>
                     </ListItem>
                     <ListItem>
                         <ListItemButton
