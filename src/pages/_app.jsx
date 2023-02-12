@@ -7,11 +7,10 @@ import { ThemeProvider } from "next-themes";
 import { AuthContextProvider } from "@context/authContext";
 import { SigningCosmWasmProvider } from "@context/cosmwasm";
 import { Provider } from "react-redux";
-import App from "./App"
+import Theme from "./theme";
 import store from "../store";
 
-import { useCookies, CookiesProvider } from 'react-cookie';
-
+import { useCookies, CookiesProvider } from "react-cookie";
 
 import "../assets/css/bootstrap.min.css";
 import "../assets/css/feather.css";
@@ -22,18 +21,6 @@ import "../assets/scss/style.scss";
 const MyApp = ({ Component, pageProps }) => {
     const getLayout = Component.getLayout || ((page) => page);
     const router = useRouter();
-    const [currentTheme, setCurrentTheme] = useState({});
-
-    const [cookies, setCookie] = useCookies(['updateThemeFlag']);
-
-
-    useEffect(() => {
-        const theme = JSON.parse(localStorage.getItem('theme'));
-        console.log('MyApp useEffect log - 1 : ', theme);
-        if (theme && theme !== currentTheme) {
-            setCurrentTheme(theme);
-        }
-    }, []);
 
     useEffect(() => {
         sal({ threshold: 0.1, once: true });
@@ -51,10 +38,12 @@ const MyApp = ({ Component, pageProps }) => {
                 <ThemeProvider defaultTheme="dark">
                     <AuthContextProvider>
                         <SigningCosmWasmProvider>
-                            <Provider store={store}>
-                                <App/>
-                                
-                            </Provider>
+                            <CookiesProvider>
+                                <Provider store={store}>
+                                    <Theme />
+                                    <Component {...pageProps} />
+                                </Provider>
+                            </CookiesProvider>
                         </SigningCosmWasmProvider>
                     </AuthContextProvider>
                 </ThemeProvider>
