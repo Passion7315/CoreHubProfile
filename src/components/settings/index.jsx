@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { FiSettings } from "react-icons/fi";
 import {
     Box,
@@ -91,6 +91,18 @@ const Settings = () => {
     const [colorPickerColor, setColorPickerColor] = useState("#ffffffff");
     const [blurMode, setBlurMode] = useState(false);
     const [uploadImageList, setImageList] = useState([]);
+
+    useEffect(() => {
+        const theme = JSON.parse(localStorage.getItem("theme"));
+        setColorPickerColor(theme.backgroundColor);
+        setBlurMode(theme.blurMode);
+        setNewTheme({
+            backgroundColor: theme.backgroundColor,
+            backgroundImage: theme.backgroundImage,
+            blurMode: theme.blurMode,
+        });
+    }, []);
+
     const upgradeTheme = async (
         backgroundColor_u,
         backgroundImage_u,
@@ -306,7 +318,8 @@ const Settings = () => {
                                             alt=""
                                             src={item.thumbnail}
                                             style={{
-                                                border: "1px solid gray",
+                                                border: item.imageUrl === newTheme.backgroundImage ?
+                                                    "3px solid white" : "1px solid gray",
                                             }}
                                         />
                                     </Button>
